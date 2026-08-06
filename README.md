@@ -1,6 +1,8 @@
 Sociotechnical AI tester
 
-Background: acute and forensic psychiatry
+Background
+
+Acute and forensic psychiatry
 
 Focus
 - AI reliability
