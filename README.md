@@ -16,9 +16,9 @@ Capabilities
 - Server-side vault
 
 Systems
-- HUGIN — persona test engine
-- MUNIN — reliability testing
-- ODIN — evidence ledger
-- Verdandi — proof register
+- HUGIN - persona test engine
+- MUNIN - reliability testing
+- ODIN - evidence ledger
+- Verdandi - proof register
 
 Contact: korpsystems.com
