@@ -1,16 +1,24 @@
-## Hi there 👋
+Sociotechnical AI tester
+Background: acute and forensic psychiatry
 
-<!--
-**miokorp/miokorp** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Focus
+- AI reliability
+- Safety testing
+- Adversarial pressure
 
-Here are some ideas to get you started:
+Capabilities
+- Questioning and pressure
+- Persona-based testing
+- Drift measurement
+- Provenance
+- Blind evaluation
+- Hash-chained evidence ledger
+- Server-side vault
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+Systems
+- HUGIN — persona test engine
+- MUNIN — reliability testing
+- ODIN — evidence ledger
+- Verdandi — proof register
+
+Contact: korpsystems.com
