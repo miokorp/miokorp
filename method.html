@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recursive Logical Cornering — Method</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: dark light;
+    --bg: #1a1a1a;
+    --fg: #e4e3df;
+    --muted: #8f8d86;
+    --rule: #333330;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f3f2ee;
+      --fg: #1e1e1c;
+      --muted: #63625c;
+      --rule: #d5d3cb;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Roboto Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 400;
+  }
+  .wrap {
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: clamp(2.5rem, 6vw, 5.5rem) clamp(1.25rem, 5vw, 3rem) 5rem;
+  }
+  header {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 1.4rem;
+  }
+  h1 {
+    font-family: "Orbitron", sans-serif;
+    font-weight: 600;
+    font-size: clamp(1.15rem, 3.2vw, 1.5rem);
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+    margin: 0 0 1.1rem;
+    text-transform: uppercase;
+  }
+  .lede {
+    color: var(--muted);
+    margin: 0;
+    max-width: 36rem;
+    line-height: 1.75;
+  }
+  section { margin-top: 2.6rem; }
+  h2 {
+    font-family: "Orbitron", sans-serif;
+    font-weight: 500;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 0 0 1rem;
+    color: var(--fg);
+  }
+  p { margin: 0 0 1.05rem; }
+  p:last-child { margin-bottom: 0; }
+  ol.steps {
+    list-style: none;
+    counter-reset: step;
+    padding: 0;
+    margin: 1.2rem 0 0;
+  }
+  ol.steps li {
+    counter-increment: step;
+    padding: 0.95rem 0 0.95rem 2.6rem;
+    border-top: 1px solid var(--rule);
+    position: relative;
+  }
+  ol.steps li:last-child { border-bottom: 1px solid var(--rule); }
+  ol.steps li::before {
+    content: counter(step, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0.95rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  ol.steps strong { font-weight: 500; color: var(--fg); }
+  footer {
+    margin-top: 3.5rem;
+    padding-top: 1.3rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Adversarial method note</p>
+    <h1>Recursive logical cornering</h1>
+    <p class="lede">A multi-step technique for steering a language model toward an action it is built to refuse — without keywords, obfuscation, or roleplay — by closing off its own reasoning until the target action is the only consistent one left.</p>
+  </header>
+
+  <section>
+    <h2>What it is</h2>
+    <p>The attack does not try to defeat the model's safety filters directly. It builds a premise the model itself accepts as reasonable, then removes each logical exit one at a time. Every individual step is locally sound, so the model agrees to it. By the time the exits are closed, the model's own consistent reasoning leaves only one available move — the one chosen from the start.</p>
+  </section>
+
+  <section>
+    <h2>How it proceeds</h2>
+    <ol class="steps">
+      <li><strong>Establish a premise the model accepts.</strong> Begin from a framing the model treats as legitimate and reasons inside, rather than one it flags.</li>
+      <li><strong>Advance in locally sound steps.</strong> Each move follows from the last. No single step looks like an attack, so none triggers refusal.</li>
+      <li><strong>Close the exits.</strong> As the model offers alternatives, each is addressed on its own terms until the reasoning space narrows.</li>
+      <li><strong>Let the model arrive at the action.</strong> The target move becomes the model's own conclusion, not an instruction it was given.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Why it works</h2>
+    <p>The method turns the model's consistency against it. A model that reasons carefully will follow a chain of individually reasonable steps, and will resist being told to stop part-way, because each step is defensible. It never detects that it is being led toward a refused action, because at no point does a step resemble an attack. The pressure is logical, not lexical.</p>
+  </section>
+
+  <section>
+    <h2>Why it matters for agentic systems</h2>
+    <p>The technique is most consequential where a model can call tools. The attack never forces a tool call; it constructs a line of reasoning in which calling the tool becomes the model's own conclusion. An agent that can be reasoned into an action through a sequence of plausible steps — with no forbidden keywords anywhere in the exchange — is exactly the failure mode that keyword- and content-based safeguards do not catch. The method generalizes across targets and across models, because it exploits reasoning, not any specific prompt.</p>
+  </section>
+
+  <footer>
+    miokorp · AI reliability and safety testing
+  </footer>
+</div>
+</body>
+</html>
